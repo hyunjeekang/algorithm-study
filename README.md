@@ -7,14 +7,17 @@
     <td align="center"><a href="https://github.com/Kim-su-been"><img src="https://avatars.githubusercontent.com/Kim-su-been" width="150px;" alt=""></td>
     <td align="center"><a href="https://github.com/soo83705-ui"><img src="https://avatars.githubusercontent.com/soo83705-ui" width="150px;" alt=""></td>
     <td align="center"><a href="https://github.com/bada0310"><img src="https://avatars.githubusercontent.com/bada0310" width="150px;" alt=""></td>
+    <td align="center"><a href="https://github.com/yula2000"><img src="https://avatars.githubusercontent.com/yula2000" width="150px;" alt=""></td>
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/hyunjeekang"><b>강현지</b></td>
     <td align="center"><a href="https://github.com/Kim-su-been"><b>김수빈</b></td>
     <td align="center"><a href="https://github.com/soo83705-ui"><b>김수진</b></td>
     <td align="center"><a href="https://github.com/bada0310"><b>박성은</b></td>
+    <td align="center"><a href="https://github.com/yula2000"><b>홍유라</b></td>
   </tr>
   <tr>
+    <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
     <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
     <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
     <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
@@ -37,9 +40,9 @@
 
 ## 🗓️ 주차별 진행
 
-| 주차 | 주제 | 도전 문제 | 난이도 | 강현지 | 김수빈 | 김수진 | 박성은 |
-| --- | --- | --- | :-: | --- | --- | --- | --- |
-| 1주차 | 배열 | [두 수의 합](https://www.acmicpc.net/problem/3273) | <img src='https://static.solved.ac/tier_small/8.svg' height='20px'/> |  |  |  |  |
+| 주차 | 주제 | 도전 문제 | 난이도 | 강현지 | 김수빈 | 김수진 | 박성은 | 홍유라 |
+| --- | --- | --- | :-: | --- | --- | --- | --- | --- |
+| 1주차 | 배열 | [두 수의 합](https://www.acmicpc.net/problem/3273) | <img src='https://static.solved.ac/tier_small/8.svg' height='20px'/> |  |  |  |  |  |
 
 <br/>
 
@@ -69,7 +72,7 @@ gildonghong/
 
 - **PR**(1일 문제 PR, 매일)
   - **PR 제목** : `🔀merge: [{날짜}] {이름} 문제풀이` (예: `🔀merge: [260101] 홍길동 문제풀이`)
-  - **PR 내용** : 이번 주에 풀면서 어려웠던 점이나, "이 문제 리뷰해주세요" 같은 코멘트 남기기.
+  - **PR 내용** : 접근 방식, 어려웠던 점, 막힌 점 등 자유 형식
 
 - **PR**(도전 문제 PR, 주 1회)
   - **PR 제목**: `🔀merge: [week {N}] {이름} 도전문제풀이` (예: `🔀merge: [week 1] 홍길동 도전문제풀이`)
