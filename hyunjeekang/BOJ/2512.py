@@ -11,7 +11,7 @@ checked_b, checked_f = 0, max(budgets)
 def search(limit):
     global checked_b, checked_f
 
-    if checked_f <= checked_b:
+    if checked_f < checked_b:
         return checked_f
 
     cur_total_budget = 0
