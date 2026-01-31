@@ -1,16 +1,11 @@
-lamps = ['N']+list(input())
-len_lamps = len(lamps)
-switch = {'Y':'N', 'N':'Y'}
+lamps = [0] + [1 if x == 'Y' else 0 for x in input().strip()]
+n = len(lamps)
 cnt = 0
 
-for i in range(1, len_lamps):
-    lamp = lamps[i]
-    if lamp == 'Y':
-        for j in range(i, len_lamps, i):
-            lamps[j] = switch[lamps[j]]
+for i in range(1, n):
+    if lamps[i] == 1:
         cnt += 1
+        for j in range(i, n, i):
+            lamps[j] = 1 - lamps[j]
 
-if 'Y' in lamps:
-    print(-1)
-else:
-    print(cnt)
+print(cnt)
