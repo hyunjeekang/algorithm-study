@@ -1,3 +1,4 @@
+#1713
 n = int(input()) # 3
 k = int(input()) # 9 
 lst_people = list(map(int,input().split()))  # 2 1 4 3 5 6 2 7 2
@@ -42,4 +43,4 @@ print(*final_keys)
 # #                
 # # clean_dict = {k: v for k, v in sort_dict.items() if v != 0} 
 # sort_dict = dict(sorted(dict_num.items(), key=lambda x: x[1], reverse=True))             
-# print(*sort_dict.keys())
+# print(*sort_dict.keys()) 
