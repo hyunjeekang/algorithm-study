@@ -51,6 +51,7 @@ def check_dia():
     return res
         
 cnt = 0
+
 for i in range(5):
     for j in range(5): # 2차원 행렬에 조건을 부여하기 위한 기본 i, j 지칭 
         s = speak[i][j]
@@ -58,14 +59,23 @@ for i in range(5):
         for y in range(5):
             for x in range(5):
                 if board[y][x] == s:
-                    cnt = 0
                     bingo[y][x] = 1
-                    cnt = check_row() + check_col() + check_dia()
-                    if cnt == 3:
-                        finish = True
-                        break
-            if finish: break
-        if finish: break
-    if finish:break
-        
+        total = 0        
+        total += check_row()
+        total += check_col()  
+        total += check_dia()
+                
+        if total >= 3:
+            finish = True
+            break
+    if finish: break
+
+
 print(count)
+            
+
+
+
+
+
+        
