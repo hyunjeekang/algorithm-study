@@ -38,5 +38,4 @@ for _ in range(t):
                                 visited[nr][nc] = True
                                 q.append((nr, nc))
                 worm_count+=1
-
     print(worm_count)
