@@ -23,6 +23,7 @@ max_count = 0
 for r in range(n):
     for c in range(n):
         if arr[r][c] == 1:
+            #체스판을 흑백으로 나누기-연산횟수 줄이기
             if (r+c)%2 == 0:
                 black_pos.append((r,c))
             else:
@@ -32,9 +33,10 @@ for r in range(n):
 def dfs(index, count, pos_list,  diag1, diag2):
     global max_count
 
+    #남은 칸수더해봤자 최대 개수보다 작거나 같으면 탐색 필요 없음-가지치기
     if max_count >= count + (len(pos_list) - index):
         return
-
+    #탐색 성공
     if index == len(pos_list):
         max_count = max(max_count, count)
         return
@@ -42,17 +44,17 @@ def dfs(index, count, pos_list,  diag1, diag2):
     r,c = pos_list[index]
 
     dfs(index+1, count, pos_list,diag1,diag2)
-
+    #백트래킹 
     if not diag1[r+c] and not diag2[r-c+n]:
         diag1[r+c] = True
         diag2[r-c+n] = True
 
         dfs(index+1, count+1, pos_list, diag1,diag2)
-
+        #복원
         diag1[r+c] = False
         diag2[r-c+n] = False
         
-
+#흑백 각각 탐색후 더하기
 black_ans= -1
 white_ans= -1
 

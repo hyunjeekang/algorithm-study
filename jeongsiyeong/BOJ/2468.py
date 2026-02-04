@@ -1,3 +1,4 @@
+#백준 2468 안전영역
 from collections import deque
 def is_range(r,c,max_r,max_c):
     return r>=0 and r<max_r and c>=0 and c<max_c
@@ -18,6 +19,7 @@ for col in field:
 for height in range(max_n+1):
     visited = [[False for _ in range(N)] for _ in range(N)]  
     area_count = 0
+    #각 높이마다 bfs 탐색
     for r in range(N):
         for c in range(N):
             if not visited[r][c] and field[r][c] > height:
