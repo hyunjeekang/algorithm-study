@@ -7,7 +7,7 @@ for test_case in range(1, T + 1):
 
     results = [""] * N
 
-    #90도 []
+    #90도
     for c in range(N):
         for r in range(N-1,-1,-1):
             results[c]+=arr[r][c]
@@ -21,7 +21,8 @@ for test_case in range(1, T + 1):
     
     #270도
     for c in range(N-1,-1,-1):
-        for c in range(N):
-            results[N-1-r] += arr[r][c]
+        for r in range(N):
+            results[N-1-c] += arr[r][c]
     
-    print(results[0])
+    for string in results:
+        print(string)
