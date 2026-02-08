@@ -20,28 +20,7 @@ for _ in range(K):
             field[r][c] = 1
 areas = []
 worm_count = 0
-for r in range(N):
-    for c in range(M):
-        if not visited[r][c] and field[r][c] == 0:
-            q = deque()
-            q.append((r, c))
-            visited[r][c] = True
-            area_count=1
-            while q:
-                cur_r, cur_c = q.popleft()
-                    
-
-                for dir in range(4):
-                    nr = cur_r + dr[dir]
-                    nc = cur_c + dc[dir]
-
-                    if is_range(nr, nc, N, M):
-                        if not visited[nr][nc] and field[nr][nc] == 0:
-                            visited[nr][nc] = True
-                            area_count+=1
-                            q.append((nr, nc))
-            worm_count+=1
-            areas.append(area_count)
+c
 print(worm_count)
 areas.sort()
 print(*areas)
