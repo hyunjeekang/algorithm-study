@@ -16,7 +16,7 @@ for tc in range(1, 11):
         while stack and stack[-1] == 1:
             stack.pop()
 
-        # N극 > S극 으로 바뀔 때마다 cnt 늘리기
+        # N극 > S극 으로 바뀔 때마다 cnt +1
         if not stack :
             continue
         prev = stack.pop()
