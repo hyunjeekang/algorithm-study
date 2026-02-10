@@ -1,109 +1,76 @@
-#상호의 배틀 필드
-# . 평지(전차가 들어갈 수 있다)
-# * 벽돌로 만들어진 벽
-# # 강철로 만들어진 벽
-# - 물(전차는 들어갈 수 없다)
-# ^ 위쪽을 바라보는 전차(아래는 평지이다)
-# V 아래쪽을 바라보는 전차(아래는 평지이다)
-# < 왼쪽을 바라보는 전차(아래는 평지이다)
-# > 오른쪽을 바라보는 전차(아래는 평지이다)
-
-# 입력 종류
-# U Up: 전차가 바라보는 방향을 위쪽으로 바꾸고, 한 칸 위의 칸이 평지라면 위 그 칸으로 이동한다.
-# D Down: 전차가 바라보는 방향을 아래쪽으로 바꾸고, 한 칸 아래의 칸이 평지라면 그 칸으로 이동한다.
-# L Left: 전차가 바라보는 방향을 왼쪽으로 바꾸고, 한 칸 왼쪽의 칸이 평지라면 그 칸으로 이동한다.
-# R Right: 전차가 바라보는 방향을 오른쪽으로 바꾸고, 한 칸 오른쪽의 칸이 평지라면 그 칸으로 이동한다.
-# S Shoot : 전차가 현재 바라보고 있는 방향으로 포탄을 발사한다.
-
-#벽돌로 만들어진 벽 포탄 부딪히면 평지
-
 T = int(input())
 
 for test_case in range(1, T+1):
     H, W = map(int, input().split())
-    def is_range(r,c):
-        return 0<=r<H and 0<=c<W
     arr = [list(input()) for _ in range(H)]
-
-    fortress = [0, 0, 0 ] # r, c, dir
     
+    # 전차 상태 [r, c, direction]
+    fortress = [0, 0, 0] 
+    
+    # 방향: 0:Right, 1:Down, 2:Left, 3:Up
     dr = [0, 1, 0, -1]
     dc = [1, 0, -1, 0]
+    
+    # 전차 기호와 방향 매핑
+    dir_dict = {'>': 0, 'v': 1, '<': 2, '^': 3} 
 
+    
+    # 1. 초기 전차 위치 찾기
+    found = False
     for r in range(H):
         for c in range(W):
-            if arr[r][c] == '>':
-                fortress[0] = r
-                fortress[1] = c
-                fortress[2] = 0
+            if arr[r][c] in ['^', 'v', '<', '>']: 
+                fortress[0], fortress[1] = r, c
+                if arr[r][c] == '>': fortress[2] = 0
+                elif arr[r][c] == 'v': fortress[2] = 1
+                elif arr[r][c] == '<': fortress[2] = 2
+                elif arr[r][c] == '^': fortress[2] = 3
+                found = True
                 break
-            elif arr[r][c] == 'V':
-                fortress[0] = r
-                fortress[1] = c
-                fortress[2] = 1
-                break
-            elif arr[r][c] == '<':
-                fortress[0] = r
-                fortress[1] = c
-                fortress[2] = 2
-                break
-            elif arr[r][c] == '^':
-                fortress[0] = r
-                fortress[1] = c
-                fortress[2] = 3
-                break
-    
+        if found: break
+
     N = int(input())
     cmds = input()
+    
+    # 방향에 따른 전차 모양 리스트 (0, 1, 2, 3 순서)
+    shape = ['>', 'v', '<', '^'] 
+
+    def is_range(r, c):
+        return 0 <= r < H and 0 <= c < W
+
     for cmd in cmds:
-        if cmd == 'U':
-            fortress[2] = 3
-            arr[fortress[0]][fortress[1]] = '^'
-            nr = fortress[0] + dr[fortress[2]]
-            nc = fortress[1] + dc[fortress[2]]
-            if is_range(nr,nc) and arr[nr][nc] == '.':
-                arr[fortress[0]][fortress[1]] = '.'
-                fortress[0] = nr
-                fortress[1] = nc
-        elif cmd == 'D':
-            fortress[2] = 1
-            arr[fortress[0]][fortress[1]] = 'V'
-            nr = fortress[0] + dr[fortress[2]]
-            nc = fortress[1] + dc[fortress[2]]
-            if is_range(nr,nc) and arr[nr][nc] == '.':
-                arr[fortress[0]][fortress[1]] = '.'
-                fortress[0] = nr
-                fortress[1] = nc
-        elif cmd == 'L':
-            fortress[2] = 2
-            arr[fortress[0]][fortress[1]] = '<'
-            nr = fortress[0] + dr[fortress[2]]
-            nc = fortress[1] + dc[fortress[2]]
-            if is_range(nr,nc) and arr[nr][nc] == '.':
-                arr[fortress[0]][fortress[1]] = '.'
-                fortress[0] = nr
-                fortress[1] = nc
-        elif cmd == 'R':
-            fortress[2] = 0
-            arr[fortress[0]][fortress[1]] = '>'
-            nr = fortress[0] + dr[fortress[2]]
-            nc = fortress[1] + dc[fortress[2]]
-            if is_range(nr,nc) and arr[nr][nc] == '.':
-                arr[fortress[0]][fortress[1]] = '.'
-                fortress[0] = nr
-                fortress[1] = nc
-        elif cmd == 'S':
+        if cmd == 'S':
             # 포탄 발사
             sr, sc = fortress[0], fortress[1]
+            curr_dir = fortress[2]
             while True:
-                sr += dr[fortress[2]]
-                sc += dc[fortress[2]]
-                if not is_range(sr, sc) or arr[sr][sc] == '#': # 맵 밖이나 강철 벽
+                sr += dr[curr_dir]
+                sc += dc[curr_dir]
+                if not is_range(sr, sc) or arr[sr][sc] == '#':
                     break
-                if arr[sr][sc] == '*': # 벽돌 벽
+                if arr[sr][sc] == '*':
                     arr[sr][sc] = '.'
                     break
-    
-    print(f'#{test_case}',end=" ")
+        else:
+            new_dir = -1
+            if cmd == 'U': new_dir = 3
+            elif cmd == 'D': new_dir = 1
+            elif cmd == 'L': new_dir = 2
+            elif cmd == 'R': new_dir = 0
+            
+            if new_dir != -1:
+                fortress[2] = new_dir # 1. 방향 전환
+                # 현재 위치의 전차 모양을 일단 바뀐 방향으로 업데이트 (이동 못하더라도 방향은 바뀌니까)
+                arr[fortress[0]][fortress[1]] = shape[new_dir] 
+                
+                nr = fortress[0] + dr[new_dir]
+                nc = fortress[1] + dc[new_dir]
+                
+                if is_range(nr, nc) and arr[nr][nc] == '.':
+                    arr[fortress[0]][fortress[1]] = '.' # 2. 옛날 위치 지우기
+                    fortress[0], fortress[1] = nr, nc   # 3. 좌표 이동
+                    arr[fortress[0]][fortress[1]] = shape[new_dir] # 4. 새로운 위치에 전차 모양 그리기
+
+    print(f'#{test_case}', end=" ")
     for line in arr:
         print("".join(line))
