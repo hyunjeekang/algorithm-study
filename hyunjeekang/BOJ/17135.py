@@ -59,7 +59,7 @@ def main(start, count):
         return
     for c in range(start, M):
         archers.append((N, c))  # 궁수 자리 배치
-        main(start+1, count+1)  
+        main(c+1, count+1)  
     archers.pop()               # 백트래킹
 
 main(0, 0)
