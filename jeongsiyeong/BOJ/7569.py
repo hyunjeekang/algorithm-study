@@ -31,7 +31,7 @@ while queue:
             max_days = max(max_days, dist[curr_z][nr][nc])
             queue.append((curr_z, nr, nc))
     for i in range(2):
-        nz = curr_r + dz[i]
+        nz = curr_z + dz[i]
 
         if 0<=nz<H and grid[nz][curr_r][curr_c] == 0:
             grid[nz][curr_r][curr_c] = 1
