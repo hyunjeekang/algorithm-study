@@ -27,7 +27,7 @@ def dijkstra(start, end):
             nweight = dist[cur] + weight    # 다음 노드의 최단거리 후보 : 현재최단거리 + 현재노드 -> 다음노드 비용
             if nweight <  dist[next]:       # 후보 vs 최단거리 비교
                 dist[next] = nweight        # 갱신
-                heapq.heappush(hq, (weight, next))  # 다음 탐색
+                heapq.heappush(hq, (nweight, next))  # 다음 탐색
 
     return abs(dist[end])
 
