@@ -2,6 +2,7 @@ import sys
 input = sys.stdin.readline
 N = int(input())
 inning_results = [list(map(int, input().split()))for _ in range(N)]
+score_table = [0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4]
 
 def game_simulation(hitters):
     score = 0
@@ -26,14 +27,13 @@ def inning_simulation(start_hitter, hitters, inning):
             out_count += 1
         else:
             # 1. 현재 베이스에 타자(1)를 추가하고 루타수만큼 밀기
-            base = (base << 1) | 1 # 기존 타자들 1칸 밀고 1루에 보냄
-            base = base << (hit - 1) # 나머지 루타수만큼 더 밀기
+            new_base = (base << 1 | 1) << (hit - 1)
             
             # 2. 3루를 벗어난 주자들(3비트 이후)을 점수에 더함
-            score += bin(base >> 3).count('1')  # bin(7) = '0b111'
+            score += score_table[new_base >> 3]
             
             # 3. 베이스에 1~3루 주자만 남김 (3비트만 남기기)
-            base = base & 7 # 7 == 111
+            base = new_base & 7 # 7 == 111
         
         # match hit:
         #     case 0 : out_count += 1
