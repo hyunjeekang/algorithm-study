@@ -1,38 +1,33 @@
-N = int(input())
+arr = [0] * 100
 
-arr = [[0]*100 for _ in range(100)]
+n = int(input())
 
-for _ in range(N):
+for _ in range(n):
     c, r = map(int, input().split())
+    # 11..1 을 가로 길이만큼 시프트
+    b_paper = ((1 << 10) - 1) << c
 
     for i in range(r, r + 10):
-        for j in range(c, c+10):
-            arr[i][j] = 1
-
-#세로로 높이 누적하기 누적하기
-for r in range(1, 100):
-    for c  in range(100):
-        if arr[r][c] == 1:
-            arr[r][c] += arr[r-1][c]
+        arr[i] |= b_paper
 
 mx_area = 0
 
 for r in range(100):
-    for c in range(100):
-        height = arr[r][c]
+    cur_bits = arr[r]
 
-        #높이 0이면?
-        if height == 0:
-            continue
-        # 중간에 0을 만나면?
-        for k in range(c, 100):
-            if arr[r][k] == 0:
-                break
+    for i in range(r, 100):
+        cur_bits &= arr[i]
+
+        if cur_bits == 0:
+            break
+
+        height = i - r + 1
+
+        width = 0
+        tmp = cur_bits
+        while tmp > 0 :
+            tmp &= (tmp << 1)
+            width += 1
         
-            height = min(height, arr[r][k])
-
-            width = k - c + 1
-
-            mx_area = max(mx_area, width * height)
-
+        mx_area = max(mx_area, width * height)
 print(mx_area)
