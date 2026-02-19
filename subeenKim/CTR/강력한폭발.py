@@ -1,5 +1,3 @@
-from collections import deque
-
 n = int(input())
 grid = [list(map(int, input().split())) for _ in range(n)]
 
@@ -19,7 +17,7 @@ def bomb_kind(temp_list):
         temp_list.pop()
 
 # 폭탄이 놓이는 위치 모으기
-bomb_loc = deque([])
+bomb_loc = []
 for i in range(n):
     for j in range(n):
         if grid[i][j] == 1:
