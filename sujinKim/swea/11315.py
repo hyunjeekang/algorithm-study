@@ -36,7 +36,7 @@ for tc in range(1, T + 1):
                             break #
 
                     if p >= 5:
-                        found = True
+                        found = True 
                         break
 
     if found:

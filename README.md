@@ -43,11 +43,12 @@
 
 ## 🗓️ 주차별 진행
 
-| 주차 | 주제 | 도전 문제 | 난이도 | 강현지 | 김수빈 | 김수진 | 박성은 | 정시영 | 홍유라 |
+| 주차 (스터디 진행 문서) | 주제 | 도전 문제 | 난이도 | 강현지 | 김수빈 | 김수진 | 박성은 | 정시영 | 홍유라 |
 | :--:  | :-:  | :-:  | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | 1주차 ([📝 2/1 ](/summary/week1-260201.md)) | 배열 | [두 수의 합](https://www.acmicpc.net/problem/3273) | <img src='https://static.solved.ac/tier_small/8.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ❎ |
 | 2주차 ([📝 2/8 ](/summary/week2-260208.md)) | 연결 리스트 | [에디터](https://www.acmicpc.net/problem/1406) | <img src='https://static.solved.ac/tier_small/9.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 3주차 [2/15] | 스택 | [스택 수열](https://www.acmicpc.net/problem/1874) | <img src='https://static.solved.ac/tier_small/9.svg' height='20px'/> |  |  |  |  |  |  |
+| 3주차 ([📝 2/15 ](/summary/week3-260215.md)) | 스택 | [스택 수열](https://www.acmicpc.net/problem/1874) | <img src='https://static.solved.ac/tier_small/9.svg' height='20px'/> | ✅ | ✅ | ❎ | ✅ | ✅ | ❎ |
+| 4주차 [2/22] | 큐 | [카드2](https://www.acmicpc.net/problem/2164) | <img src='https://static.solved.ac/tier_small/7.svg' height='20px'/> |  |  |  |  |  |  |
 
 <br/>
 
