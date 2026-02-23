@@ -39,3 +39,4 @@ for tc in range(1, T+1):
     #     if par[i] == 0: #부모가 없으면
     #         root = i
     #         break 
+    
