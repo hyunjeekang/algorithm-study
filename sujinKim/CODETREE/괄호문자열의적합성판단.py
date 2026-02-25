@@ -48,9 +48,9 @@ s = Stack() #Stack 클래스의 인스턴스를 생성한다. #실제물건 #이
 for char in string:
     if char == '(':
         s.push   # 즉, char가 )일떄 
-        if s.empty():
+        if s.empty(): #잘못된 괄호 짝을 찾아내는 결정적인 순간 
             print("No")
-            sys.exit(0)
+            sys.exit(0) #더 볼 것도 없이 당장 프로그램 끝내기 
 
         s.pop()
 
