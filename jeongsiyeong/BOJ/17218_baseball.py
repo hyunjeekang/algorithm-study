@@ -1,20 +1,21 @@
 import sys
 from itertools import permutations
+
 input = sys.stdin.readline
 N = int(input())
 hits = [list(map(int, input().split())) for _ in range(N)]
 
-order = [0] * 9
-order[3] = 0
 mx_scores = 0
 
-def simulate(order):
+for p in permutations(range(1, 9), 8):
+    order = p[:3] + (0,) + p[3:] 
+    
     scores = 0
     hitter_idx = 0
     
     for inning in range(N):
         out = 0
-        base = 0 
+        b1, b2, b3 = 0, 0, 0
         
         while out < 3:
             cur_hitter = order[hitter_idx]
@@ -22,20 +23,22 @@ def simulate(order):
             
             if hit == 0:
                 out += 1
-            else:
-                base |= 1 
-                
-                base <<= hit
-                
-                scores += bin(base >> 4).count('1')
-                
-                base &= 14 
+            elif hit == 1:
+                scores += b3
+                b1, b2, b3 = 1, b1, b2
+            elif hit == 2:
+                scores += b2 + b3
+                b1, b2, b3 = 0, 1, b1
+            elif hit == 3:
+                scores += b1 + b2 + b3
+                b1, b2, b3 = 0, 0, 1
+            elif hit == 4:
+                scores += b1 + b2 + b3 + 1
+                b1, b2, b3 = 0, 0, 0
                 
             hitter_idx = (hitter_idx + 1) % 9
             
-    return scores
+    if scores > mx_scores:
+        mx_scores = scores
 
-for p in permutations(range(1,9), 8):
-    order = list(p[:3]) + [0] + list(p[3:])
-    mx_scores = max(mx_scores, simulate(order))
 print(mx_scores)
