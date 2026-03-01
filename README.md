@@ -19,7 +19,7 @@
     <td align="center"><a href="https://github.com/yula2000"><b>홍유라</b></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
+    <td align="center"><img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"></td>
     <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
     <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
     <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
@@ -48,7 +48,8 @@
 | 1주차 ([📝 2/1 ](/summary/week1-260201.md)) | 배열 | [두 수의 합](https://www.acmicpc.net/problem/3273) | <img src='https://static.solved.ac/tier_small/8.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ❎ |
 | 2주차 ([📝 2/8 ](/summary/week2-260208.md)) | 연결 리스트 | [에디터](https://www.acmicpc.net/problem/1406) | <img src='https://static.solved.ac/tier_small/9.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 3주차 ([📝 2/15 ](/summary/week3-260215.md)) | 스택 | [스택 수열](https://www.acmicpc.net/problem/1874) | <img src='https://static.solved.ac/tier_small/9.svg' height='20px'/> | ✅ | ✅ | ❎ | ✅ | ✅ | ❎ |
-| 4주차 [2/22] | 큐 | [카드2](https://www.acmicpc.net/problem/2164) | <img src='https://static.solved.ac/tier_small/7.svg' height='20px'/> |  |  |  |  |  |  |
+| 4주차 ([📝 2/22](/summary/week4-260222.md)) | 큐 | [카드2](https://www.acmicpc.net/problem/2164) | <img src='https://static.solved.ac/tier_small/7.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 4주차 ([📝 3/3]) | 덱 | [AC](https://www.acmicpc.net/problem/5430) | <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/> |  |  | | | | |
 
 <br/>
 
@@ -148,13 +149,6 @@ git push origin master
 
 -   **✅제목과 내용을 [PR 규칙](#-prpull-request)에 맞게 작성✅하고 `Create Pull Request` 버튼을 누릅니다.**
 
-### 👓 원본 저장소 동기화
-
-원본 저장소가 업데이트되면, 내 저장소에도 반영해야 합니다.
-
-1. GitHub 내 저장소 메인 화면에 간다.
-2. `Sync Fork` 버튼을 누르고 `Update branch`를 클릭한다.
-3. 로컬(내 컴퓨터)에서 `git pull origin main`을 입력하여 변경 사항을 받아온다.
 
 <br/>
 
