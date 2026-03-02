@@ -17,7 +17,6 @@ def perm(depth):
         perm(depth+1)
 perm(0)
 
-
 # K, N = map(int, input().split())
 
 # def choose(picked):

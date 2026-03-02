@@ -12,15 +12,54 @@
 # R이 나올 경우 reverse메서드 사용
 # D 나올 경우 popleft메서드 사용
 
+import sys
 from collections import deque
 
-input()
-order = input()
-input()
-order_list = list(map(int, input().split(',')))
+input = sys.stdin.readline
 
-q = deque(order_list)
+# 테스트 케이스 수
+t = int(input())
 
+for _ in range(t):
+    # 변수
+    order = input().strip()
+    n_str = input().strip()
+    if not n_str: break # 예외 처리
+    n = int(n_str)
+    
+    # 3. 배열 문자열 처리 
+    raw_arr = input().strip()[1:-1]
+    
+    if n > 0:
+        q = deque(raw_arr.split(','))
+    else:
+        q = deque()
+
+    is_reversed = False
+    error_occurred = False
+
+
+    for cmd in order:
+        if cmd == 'R':
+            is_reversed = not is_reversed
+        elif cmd == 'D':
+            if not q:
+                print("error")
+                error_occurred = True
+                break
+            
+            # 뒤집힌 상태면 오른쪽(pop), 아니면 왼쪽(popleft)
+            if is_reversed:
+                q.pop()
+            else:
+                q.popleft()
+
+
+    if not error_occurred:
+        if is_reversed:
+            q.reverse()
+        
+        print("[" + ",".join(q) + "]")
 
 
 
