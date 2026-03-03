@@ -43,6 +43,7 @@ for _ in range(t):
         if cmd == 'R':
             is_reversed = not is_reversed
         elif cmd == 'D':
+            # if는 true만 출력함 근데 지금 q는 비어있어서 false 상태임 하지만 우리는 조건문을 실행하고 싶으니까 not써줌
             if not q:
                 print("error")
                 error_occurred = True
