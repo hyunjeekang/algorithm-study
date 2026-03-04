@@ -29,7 +29,7 @@ for tc in range(1, T+1):
 
     while q:
         cn = q.popleft()
-#visited 배열에 +=1씩 저장
+
         if cn == G:
             ans = visited[cn] - 1
             break
