@@ -43,6 +43,7 @@ def kill_mon(case, curr_grid): # bfs?  # 왼쪽부터 탐색하도록
     return cnt
 
 
+
 # 최종 함수 
 answer = 0
 # 복사하는 부분
