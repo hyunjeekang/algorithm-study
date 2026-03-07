@@ -49,7 +49,8 @@
 | 2주차 ([📝 2/8 ](/summary/week2-260208.md)) | 연결 리스트 | [에디터](https://www.acmicpc.net/problem/1406) | <img src='https://static.solved.ac/tier_small/9.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 3주차 ([📝 2/15 ](/summary/week3-260215.md)) | 스택 | [스택 수열](https://www.acmicpc.net/problem/1874) | <img src='https://static.solved.ac/tier_small/9.svg' height='20px'/> | ✅ | ✅ | ❎ | ✅ | ✅ | ❎ |
 | 4주차 ([📝 2/22](/summary/week4-260222.md)) | 큐 | [카드2](https://www.acmicpc.net/problem/2164) | <img src='https://static.solved.ac/tier_small/7.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 4주차 ([📝 3/3]) | 덱 | [AC](https://www.acmicpc.net/problem/5430) | <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/> |  |  | | | | |
+| 5주차 ([📝 3/3]) | 덱 | [AC](https://www.acmicpc.net/problem/5430) | <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 6주차 ([📝 3/8]) | 스택의 활용 | [괄호의 값](https://www.acmicpc.net/problem/2504) | <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/> |  |  |  |  |  |  |
 
 <br/>
 
