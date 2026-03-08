@@ -35,6 +35,7 @@ cal = 1
 #         stack.append(i)
 #     elif i == ')'or i == ']':
 #         stack.pop(i)
+# 대칭검사까지 하고 어떻게 하는지 모르겠어서 제미나이한테 물어봄
 for i in range(len(str_lst)):
     if str_lst[i] == '(':
         stack.append('(')
@@ -43,16 +44,21 @@ for i in range(len(str_lst)):
         stack.append('[')
         cal *= 3
     elif str_lst[i] == ')':
-        if not stack or stack[-1] != '(': #비어있거나 짝 안맞으면
+        if not stack or stack[-1] != '(': #비어있거나 짝 안맞으면 답에 0을 저장하고
             ans = 0
-            break
-        if str_lst[i-1] == '(':
-            ans += cal
+            break #break
+        if str_lst[i-1] == '(': #만약 짝이 맞으면
+            ans += cal #답에 계산 결과를 누적하고
+        stack.pop()
+        cal //= 2 # 2를 나눠서 1로 원상복구
     elif str_lst[i] == ']':
-        if not stack or stack[-1] != '[': # stack.pop() != '[' 이거랑 같은 말 근데 제미나이가 위험하다고 쓰지 말라함 
+        if not stack or stack[-1] != '[': 
             ans = 0
             break
+        if str_lst[i-1] == '[':
+            ans += cal
+        stack.pop()
+        cal //= 3
 
+print(ans)
 
-        # 이 다음엔 ㄹㅇ 어떻게 하는지 모르겠음...
-        # 죄송합니다 
