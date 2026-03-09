@@ -20,3 +20,5 @@ def dfs(depth): # depth 현재 뽑은 갯수
             visited[i] =False
 
 dfs(0)
+
+                
