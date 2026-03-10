@@ -86,3 +86,4 @@ for i in range(N):
             break
         
     if found: break
+print(ans if ans != float('inf') else -1)
