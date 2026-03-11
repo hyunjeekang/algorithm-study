@@ -1,7 +1,7 @@
 dx =[0,-1,1,0,0]
 dy = [0,0,0,-1,1]
 
-
+rev_d = {1:2, 2:1, 3:4,4:3}
 def move_micro(arr, N):
     next_pos = {}
 
