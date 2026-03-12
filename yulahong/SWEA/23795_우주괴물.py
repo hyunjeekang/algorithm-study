@@ -40,7 +40,7 @@ for tc in range(1, T+1):
     for row in area:
         for cell in row:
             if cell == 0:
-                count_zero += 1
+                count_zero += 1 
                  
                  
     print(f'#{tc} {count_zero}')
