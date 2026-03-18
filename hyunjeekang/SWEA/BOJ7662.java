@@ -1,18 +1,14 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
 import java.util.StringTokenizer;
+import java.util.TreeMap;
 
 public class BOJ7662 {
 
 	static int T, k, value;
 	static String command;
-	static PriorityQueue<Integer> minPQ, maxPQ;
-	static Map<Integer, Integer> map;
+	static TreeMap<Integer, Integer> treeMap;
 
 	public static void main(String[] args) throws IOException {
 
@@ -25,9 +21,7 @@ public class BOJ7662 {
 		for (int t = 0; t < T; t++) {
 			k = Integer.parseInt(br.readLine().strip());
 
-			minPQ = new PriorityQueue<>();
-			maxPQ = new PriorityQueue<>(Collections.reverseOrder());
-			map = new HashMap<>();
+			treeMap = new TreeMap<>();
 
 			for (int kk = 0; kk < k; kk++) {
 				st = new StringTokenizer(br.readLine());
@@ -35,43 +29,30 @@ public class BOJ7662 {
 				value = Integer.parseInt(st.nextToken());
 
 				if (command.equals("I")) {
-					minPQ.add(value);
-					maxPQ.add(value);
-					map.put(value, map.getOrDefault(value, 0) + 1);
+					treeMap.put(value, treeMap.getOrDefault(value, 0) + 1);
 
 				} else { // command == "D"
-					PriorityQueue<Integer> targetPQ = (value == 1) ? maxPQ : minPQ;
-					remove(targetPQ, map);
+                    if(treeMap.isEmpty()) continue;
 
-					if (!targetPQ.isEmpty()) {
-						int removed = targetPQ.poll();
-						if (map.get(removed) == 1)
-							map.remove(removed);
-						else
-							map.put(removed, map.get(removed) - 1);
-					}
+                    int key = (value == 1) ? treeMap.lastKey() : treeMap.firstKey();
 
+                    int count = treeMap.get(key);
+                    if(count == 1){
+                        treeMap.remove(key);
+                    }else{
+                        treeMap.put(key, count-1);
+                    }
 				}
 			}
 
-			remove(maxPQ, map);
-			remove(minPQ, map);
-
-			if (maxPQ.isEmpty())
+			if (treeMap.isEmpty())
 				sb.append("EMPTY\n");
 			else
-				sb.append(maxPQ.peek()).append(" ").append(minPQ.peek()).append("\n");
+				sb.append(treeMap.lastKey()).append(" ").append(treeMap.firstKey()).append("\n");
 		}
 
 		System.out.println(sb);
 
-	}
-
-    // 의도한 값이 나올 때까지 삭제
-	static void remove(PriorityQueue<Integer> pq, Map<Integer, Integer> map) {
-		while (!pq.isEmpty() && !map.containsKey(pq.peek())) {
-			pq.poll();
-		}
 	}
 
 }
