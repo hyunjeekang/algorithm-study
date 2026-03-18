@@ -51,7 +51,8 @@
 | 4주차 ([📝 2/22](/summary/week4-260222.md)) | 큐 | [카드2](https://www.acmicpc.net/problem/2164) | <img src='https://static.solved.ac/tier_small/7.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 5주차 ([📝 3/3]) | 덱 | [AC](https://www.acmicpc.net/problem/5430) | <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 6주차 ([📝 3/8]) | 스택의 활용 | [괄호의 값](https://www.acmicpc.net/problem/2504) | <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 6주차 ([📝 3/15]) | bfs | [벽 부수고 이동하기 3](https://www.acmicpc.net/problem/16933) | <img src='https://static.solved.ac/tier_small/15.svg' height='20px'/> |  |  |  |  |  |  |
+| 7주차 ([📝 3/15]) | bfs | [벽 부수고 이동하기 3](https://www.acmicpc.net/problem/16933) | <img src='https://static.solved.ac/tier_small/15.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 8주차 ([📝 3/22]) | 재귀 | [별 찍기 - 11](https://www.acmicpc.net/problem/2448) | <img src='https://static.solved.ac/tier_small/12.svg' height='20px'/> |  |  |  |  |  |  |
 
 <br/>
 
