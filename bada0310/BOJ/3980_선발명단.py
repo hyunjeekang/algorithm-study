@@ -1,5 +1,5 @@
-# N queen 과 비슷한 문제 
-# dfs + back track 
+# # N queen 과 비슷한 문제 
+# # dfs + back track 
 def dfs(row):
     global max_ans, total_sum
     if row == 11:
@@ -14,19 +14,20 @@ def dfs(row):
             visited[col] = False
             
 T = int(input())
-grid = [list(map(int,input().split())) for _ in range(11)]
-visited = [False]*11
-max_ans = 0
-total_sum = 0
-for i in range(11):
-    for j in range(11):
-        if grid[i][j] > 0:
-            dfs(i)
-print(max_ans)
+for t in range(T):
+    grid = [list(map(int,input().split())) for _ in range(11)]
+    visited = [False]*11
+    max_ans = 0
+    total_sum = 0
+    for i in range(11):
+        for j in range(11):
+            if grid[i][j] > 0:
+                dfs(i)
+    print(max_ans)
 
 
 # test 2 
-def dfs2(row, curr_sum):
+def dfs(row, curr_sum):
     global max_ans
     if row == 11:
         max_ans = max(max_ans, curr_sum)
@@ -39,10 +40,11 @@ def dfs2(row, curr_sum):
             visited[col] = False
             
 T = int(input())
-grid = [list(map(int,input().split())) for _ in range(11)]
-visited = [False]*11
-max_ans = 0
-dfs(0,0)
-print(max_ans)
+for t in range(T):
+    grid = [list(map(int,input().split())) for _ in range(11)]
+    visited = [False]*11
+    max_ans = 0
+    dfs(0,0)
+    print(max_ans)
             
 
