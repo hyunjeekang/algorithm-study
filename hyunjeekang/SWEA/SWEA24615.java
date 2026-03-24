@@ -1,128 +1,108 @@
 import java.util.*;
 
-class UserSolution {
-    private static final int MAX_GATE = 201;
-    private static final int INF = 1000000000;
+class SWEA24995 {
+    class Product implements Comparable<Product> {
+        int id, originPrice, category, company;
+        boolean removed = false;
 
-    int[][] grid;
-    int maxStamina, gridSize;
-    
-    int[][] gatePos = new int[MAX_GATE][2];    // 게이트 좌표 gatePos[gateID] = {row, col}
-    int[][] adj = new int[MAX_GATE][MAX_GATE];    // 인접 행렬 
-    boolean[] isActive = new boolean[MAX_GATE];    // 게이트 활성화 여부 저장 
-
-    int[] dr = {-1, 1, 0, 0};
-    int[] dc = {0, 0, -1, 1};
-
-    void init(int N, int mMaxStamina, int mMap[][]) {
-        gridSize = N;
-        maxStamina = mMaxStamina;
-        grid = new int[N][N];
-        for (int r = 0; r < N; r++) {
-            for (int c = 0; c < N; c++) {
-                grid[r][c] = mMap[r][c];
-            }
+        public Product(int id, int price, int cat, int com) {
+            this.id = id;
+            this.originPrice = price;
+            this.category = cat;
+            this.company = com;
         }
 
-        // init
-        for (int i = 0; i < MAX_GATE; i++) {
-            isActive[i] = false;
-            Arrays.fill(adj[i], INF);
-            adj[i][i] = 0;
-        }
-    }
-
-    void addGate(int mGateID, int mRow, int mCol) {
-        isActive[mGateID] = true;
-        gatePos[mGateID][0] = mRow;
-        gatePos[mGateID][1] = mCol;
-        grid[mRow][mCol] = mGateID + 10; // 기둥(1)과 Gate(1~200) 구분하기 위해서 +10
-
-        // 새로운 게이트로부터 다른 모든 게이트까지 거리 계산
-        bfsDistances(mGateID, mRow, mCol);
-    }
-
-    void removeGate(int mGateID) {
-        isActive[mGateID] = false;
-        int r = gatePos[mGateID][0];
-        int c = gatePos[mGateID][1];
-        grid[r][c] = 0;
-        
-        // reset adj 
-        Arrays.fill(adj[mGateID], INF);
-        adj[mGateID][mGateID] = 0;
-        for (int i = 0; i < MAX_GATE; i++) {
-            adj[i][mGateID] = INF;
-        }
-    }
-
-    // bfs : 시작 게이트에서 갈 수 있는 게이트, 거리 찾기 
-    private void bfsDistances(int startID, int sr, int sc) {
-        Queue<int[]> q = new LinkedList<>();
-        int[][] distMap = new int[gridSize][gridSize];
-        for(int[] row : distMap) Arrays.fill(row, -1);
-
-        q.add(new int[]{sr, sc});
-        distMap[sr][sc] = 0;
-
-        while (!q.isEmpty()) {
-            int[] curr = q.poll();
-            int cr = curr[0];
-            int cc = curr[1];
-            int d = distMap[cr][cc];
-
-            if (grid[cr][cc] >= 10) {
-                int targetID = grid[cr][cc] - 10;
-                if (isActive[targetID]) {
-                    adj[startID][targetID] = d;
-                    adj[targetID][startID] = d;
-                }
-            }
+        @Override
+        public int compareTo(Product o) {
+            // 실제 가격 = originPrice - discounts[category][company]
+            // 비교 시점의 가격으로 기격 비교
+            int myPrice = this.originPrice - discounts[this.category][this.company];
+            int oPrice = o.originPrice - discounts[o.category][o.company];
             
-            // 더이상 갈 수 없음 ( maxStamina보다 작음 )
-            if (d >= maxStamina) continue;
-
-            for (int i = 0; i < 4; i++) {
-                int nr = cr + dr[i];
-                int nc = cc + dc[i];
-
-                // 테두리가 모두 기둥이라 없어도 됨 
-                // if (nr < 0 || nc < 0 || nr >= gridSize || nc >= gridSize) continue;
-                if (grid[nr][nc] != 1 && distMap[nr][nc] == -1) {
-                    distMap[nr][nc] = d + 1;
-                    q.add(new int[]{nr, nc});
-                }
-            }
+            if (myPrice != oPrice) return Integer.compare(myPrice, oPrice);
+            return Integer.compare(this.id, o.id);
         }
     }
-    
-    // dijkstra 
-    int getMinTime(int mStartGateID, int mEndGateID) {
-        int[] minTime = new int[MAX_GATE];
-        Arrays.fill(minTime, INF);
-        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
 
-        minTime[mStartGateID] = 0;
-        pq.add(new int[]{mStartGateID, 0});
+    TreeSet<Product>[][] groups;
+    int[][] discounts;
+    HashMap<Integer, Product> idMap;
 
-        while (!pq.isEmpty()) {
-            int[] curr = pq.poll();
-            int u = curr[0];
-            int w = curr[1];
+    public void init() {
+        groups = new TreeSet[6][6];
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 1; j <= 5; j++) {
+                groups[i][j] = new TreeSet<>();
+            }
+        }
+        idMap = new HashMap<>();
+        discounts = new int[6][6];
+    }
 
-            if (w > minTime[u]) continue;
-            if (u == mEndGateID) return w;
+    public int sell(int mID, int mCategory, int mCompany, int mPrice) {
+        // 현재 그룹의 누적 할인액 더해서 저장 
+        Product p = new Product(mID, mPrice + discounts[mCategory][mCompany], mCategory, mCompany);
+        groups[mCategory][mCompany].add(p);
+        idMap.put(mID, p);
+        return groups[mCategory][mCompany].size();
+    }
 
-            for (int v = 0; v < MAX_GATE; v++) {
-                if (isActive[v] && adj[u][v] != INF) {
-                    if (minTime[v] > minTime[u] + adj[u][v]) {
-                        minTime[v] = minTime[u] + adj[u][v];
-                        pq.add(new int[]{v, minTime[v]});
+    public int closeSale(int mID) {
+        Product p = idMap.get(mID);
+        if (p == null || p.removed) return -1;
+
+        int currentPrice = p.originPrice - discounts[p.category][p.company];
+        groups[p.category][p.company].remove(p);
+        p.removed = true;
+        return currentPrice;
+    }
+
+    public int discount(int mCategory, int mCompany, int mAmount) {
+        discounts[mCategory][mCompany] += mAmount;
+        
+        // 음수 가격 된 품목 제거 
+        while (!groups[mCategory][mCompany].isEmpty()) {
+            Product p = groups[mCategory][mCompany].first();	// peek
+            if (p.originPrice - discounts[mCategory][mCompany] <= 0) {
+                groups[mCategory][mCompany].pollFirst(); // 제거 
+                p.removed = true;
+            } else { // 가격이 양수인 경우 
+                break; 
+            }
+        }
+        return groups[mCategory][mCompany].size();
+    }
+
+    public Solution.RESULT show(int mHow, int mCode) {
+        List<Product> candidates = new ArrayList<>();
+        
+        // mHow -> 탐색 범위
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 1; j <= 5; j++) {
+                boolean target = false;
+                if (mHow == 0) target = true;
+                else if (mHow == 1 && i == mCode) target = true;
+                else if (mHow == 2 && j == mCode) target = true;
+
+                if (target) {
+                    int count = 0;
+                    for (Product p : groups[i][j]) {
+                        candidates.add(p);
+                        count++;
+                        if (count == 5) break;
                     }
                 }
             }
         }
 
-        return minTime[mEndGateID] == INF ? -1 : minTime[mEndGateID];
+        // 정렬 
+        Collections.sort(candidates);
+
+        Solution.RESULT res = new Solution.RESULT();
+        res.cnt = Math.min(candidates.size(), 5);
+        for (int i = 0; i < res.cnt; i++) {
+            res.IDs[i] = candidates.get(i).id;
+        }
+        return res;
     }
 }
