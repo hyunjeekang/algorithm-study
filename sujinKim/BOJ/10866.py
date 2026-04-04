@@ -12,7 +12,7 @@ for i in range(N):
 
 result = deque()
 for j in q:
-    if j[0] == "push-front":
+    if j[0] == "push_front":
       
         result.appendleft(j[1])
     elif j[0] == "push_back":
