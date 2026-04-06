@@ -54,7 +54,8 @@
 | 7주차 ([3/15](/summary/week7-260315.md)) | bfs | [벽 부수고 이동하기 3](https://www.acmicpc.net/problem/16933) | <img src='https://static.solved.ac/tier_small/15.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 8주차 ([3/22](/summary/week8-260322.md)) | 재귀 | [별 찍기 - 11](https://www.acmicpc.net/problem/2448) | <img src='https://static.solved.ac/tier_small/12.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 9주차 ([3/30](/summary/week9-260330.md)) | 백트래킹 | [N-Queen](https://www.acmicpc.net/problem/9663) | <img src='https://static.solved.ac/tier_small/12.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 10주차 ([4/5](/summary/week10-260330.md)) | 시뮬레이션 | [Maaaaaaaaaze](https://www.acmicpc.net/problem/16985) | <img src='https://static.solved.ac/tier_small/13.svg' height='20px'/> |  |  |  |  |  |  |
+| 10주차 ([4/5](/summary/week10-260405.md)) | 시뮬레이션 | [Maaaaaaaaaze](https://www.acmicpc.net/problem/16985) | <img src='https://static.solved.ac/tier_small/13.svg' height='20px'/> |  |  |  |  |  |  |
+| 11주차 ([4/12](/summary/week11-260412.md)) | 정렬 I | [수 정렬하기 4](https://www.acmicpc.net/problem/11931) | <img src='https://static.solved.ac/tier_small/6.svg' height='20px'/> |  |  |  |  |  |  |
 <br/>
 
 ## ⚠️ 규칙 및 컨벤션
