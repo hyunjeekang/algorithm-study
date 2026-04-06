@@ -1,5 +1,3 @@
-package jadegaja;
-
 import java.io.*;
 import java.util.*;
 
