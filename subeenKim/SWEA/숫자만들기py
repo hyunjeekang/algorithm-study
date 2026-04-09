@@ -1,0 +1,25 @@
+T = int(input())
+ 
+def backtrack(cnt, total, plus, minus, mul, div):
+    global mx, mi
+    if cnt == N-1:
+        mx = total if total > mx else mx
+        mi = total if total < mi else mi
+        return
+     
+    if plus:
+        backtrack(cnt+1, total + nums[cnt+1], plus-1, minus, mul, div)
+    if minus:
+        backtrack(cnt+1, total - nums[cnt+1], plus, minus-1, mul, div)
+    if mul:
+        backtrack(cnt+1, total * nums[cnt+1], plus, minus, mul-1, div)
+    if div:
+        backtrack(cnt+1, int(total / nums[cnt+1]), plus, minus, mul, div-1)
+ 
+for tc in range(1, T+1):
+    N = int(input())
+    counts = list(map(int, input().split()))
+    nums = list(map(int, input().split()))
+    mx, mi = -float('inf'), float('inf')
+    backtrack(0, nums[0], *counts)
+    print(f'#{tc} {mx - mi}')
