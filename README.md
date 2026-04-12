@@ -19,12 +19,12 @@
     <td align="center"><a href="https://github.com/yula2000"><b>홍유라</b></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"></td>
-    <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
-    <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
-    <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
-    <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
-    <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></td>
+    <td align="center"><img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"height="26"></td>
+    <td align="center"><img src="https://img.shields.io/badge/C%2B%2B-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white"height="26"></td>
+    <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"height="26"></td>
+    <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"height="26"></td>
+    <td align="center"><img src="https://img.shields.io/badge/C%2B%2B-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white"height="26"></td>
+    <td align="center"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"height="26"></td>
   </tr>
 
 </table>
@@ -45,15 +45,17 @@
 
 | 주차 (스터디 진행 문서) | 주제 | 도전 문제 | 난이도 | 강현지 | 김수빈 | 김수진 | 박성은 | 정시영 | 홍유라 |
 | :--:  | :-:  | :-:  | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| 1주차 ([📝 2/1 ](/summary/week1-260201.md)) | 배열 | [두 수의 합](https://www.acmicpc.net/problem/3273) | <img src='https://static.solved.ac/tier_small/8.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ❎ |
-| 2주차 ([📝 2/8 ](/summary/week2-260208.md)) | 연결 리스트 | [에디터](https://www.acmicpc.net/problem/1406) | <img src='https://static.solved.ac/tier_small/9.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 3주차 ([📝 2/15 ](/summary/week3-260215.md)) | 스택 | [스택 수열](https://www.acmicpc.net/problem/1874) | <img src='https://static.solved.ac/tier_small/9.svg' height='20px'/> | ✅ | ✅ | ❎ | ✅ | ✅ | ❎ |
-| 4주차 ([📝 2/22](/summary/week4-260222.md)) | 큐 | [카드2](https://www.acmicpc.net/problem/2164) | <img src='https://static.solved.ac/tier_small/7.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 5주차 ([📝 3/3]) | 덱 | [AC](https://www.acmicpc.net/problem/5430) | <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 6주차 ([📝 3/8]) | 스택의 활용 | [괄호의 값](https://www.acmicpc.net/problem/2504) | <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 7주차 ([📝 3/15]) | bfs | [벽 부수고 이동하기 3](https://www.acmicpc.net/problem/16933) | <img src='https://static.solved.ac/tier_small/15.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 8주차 ([📝 3/22]) | 재귀 | [별 찍기 - 11](https://www.acmicpc.net/problem/2448) | <img src='https://static.solved.ac/tier_small/12.svg' height='20px'/> |  |  |  |  |  |  |
-
+| 1주차 ([2/1](/summary/week1-260201.md)) | 배열 | [두 수의 합](https://www.acmicpc.net/problem/3273) | <img src='https://static.solved.ac/tier_small/8.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ❎ |
+| 2주차 ([2/8](/summary/week2-260208.md)) | 연결 리스트 | [에디터](https://www.acmicpc.net/problem/1406) | <img src='https://static.solved.ac/tier_small/9.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 3주차 ([2/15](/summary/week3-260215.md)) | 스택 | [스택 수열](https://www.acmicpc.net/problem/1874) | <img src='https://static.solved.ac/tier_small/9.svg' height='20px'/> | ✅ | ✅ | ❎ | ✅ | ✅ | ❎ |
+| 4주차 ([2/22](/summary/week24-260222.md)) | 큐 | [카드2](https://www.acmicpc.net/problem/2164) | <img src='https://static.solved.ac/tier_small/7.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 5주차 ([3/3](/summary/week5-260303.md)) | 덱 | [AC](https://www.acmicpc.net/problem/5430) | <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 6주차 ([3/8](/summary/week6-260308.md)) | 스택의 활용 | [괄호의 값](https://www.acmicpc.net/problem/2504) | <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 7주차 ([3/15](/summary/week7-260315.md)) | bfs | [벽 부수고 이동하기 3](https://www.acmicpc.net/problem/16933) | <img src='https://static.solved.ac/tier_small/15.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 8주차 ([3/22](/summary/week8-260322.md)) | 재귀 | [별 찍기 - 11](https://www.acmicpc.net/problem/2448) | <img src='https://static.solved.ac/tier_small/12.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 9주차 ([3/30](/summary/week9-260330.md)) | 백트래킹 | [N-Queen](https://www.acmicpc.net/problem/9663) | <img src='https://static.solved.ac/tier_small/12.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 10주차 ([4/5](/summary/week10-260405.md)) | 시뮬레이션 | [Maaaaaaaaaze](https://www.acmicpc.net/problem/16985) | <img src='https://static.solved.ac/tier_small/13.svg' height='20px'/> |  |  |  |  |  |  |
+| 11주차 ([4/12](/summary/week11-260412.md)) | 정렬 I | [수 정렬하기 4](https://www.acmicpc.net/problem/11931) | <img src='https://static.solved.ac/tier_small/6.svg' height='20px'/> |  |  |  |  |  |  |
 <br/>
 
 ## ⚠️ 규칙 및 컨벤션
@@ -156,7 +158,7 @@ git push origin master
 <br/>
 
 
-## Reference Sites
+## References
 [AngularJS Git Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) <br/>
 [gitmoji](https://gitmoji.dev) <br/>
 [CodeSquad-2023-BE-Study](https://github.com/CodeSquad-2023-BE-Study/Algorithm-Study?tab=readme-ov-file) <br/>

@@ -8,7 +8,8 @@ arr = list(int(input()) for _ in range(N))
 cnt = [0]*10001 # 1 ~ 10000 [0, 0, 0, 0, ....]
 
 for j in arr:
-    cnt[j] += 1
+    cnt[arr[j]] += 1
+    
 
 # for i in range(max(arr)+1):  # arr의 가장 큰 수 (어차피 7까지만 있으니까)까지 하나씩 부르겠다
 #     for p in range(cnt[i]): # 근데 cnt의 i인덱스에 있는 수만큼 꺼내겠다
