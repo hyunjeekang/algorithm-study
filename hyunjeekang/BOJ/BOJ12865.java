@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class BOJ12855 {
+public class BOJ12865 {
     
     static int N, K, W, V;
     static int[][] stuffs;
