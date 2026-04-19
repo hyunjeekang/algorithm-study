@@ -1,0 +1,76 @@
+import java.io.*;
+import java.util.*;
+
+public class BOJ7569 {
+    final static int[] dhs = new int[] { -1, 1, 0, 0, 0, 0 };
+    final static int[] drs = new int[] { 0, 0, 0, 0, -1, 1 };
+    final static int[] dcs = new int[] { 0, 0, -1, 1, 0, 0 };
+
+    static int M, N, H, cnt;
+    static int[][][] t;
+    static Queue<int[]> q = new LinkedList<>();
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        M = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
+        H = Integer.parseInt(st.nextToken());
+
+        t = new int[H][N][M];
+        cnt = 0;
+
+        for (int h = 0; h < H; h++) {
+            for (int r = 0; r < N; r++) {
+                st = new StringTokenizer(br.readLine());
+                for (int c = 0; c < M; c++) {
+                    t[h][r][c] = Integer.parseInt(st.nextToken());
+                    if (t[h][r][c] == 1) {
+                        q.offer(new int[] { h, r, c, 0 });
+                    } 
+                    else if (t[h][r][c] == 0) {
+                        cnt++;
+                    }
+                }
+            }
+        }
+
+        if (cnt == 0) {
+            System.out.println(0);
+            return;
+        }
+
+        int result = bfs();
+        System.out.println(result);
+    }
+
+    private static int bfs() {
+        int maxDays = 0;
+
+        while (!q.isEmpty()) {
+            int[] cur = q.poll();
+            int ch = cur[0], cr = cur[1], cc = cur[2], days = cur[3];
+            
+            maxDays = Math.max(maxDays, days);
+
+            for (int i = 0; i < 6; i++) {
+                int nh = ch + dhs[i];
+                int nr = cr + drs[i];
+                int nc = cc + dcs[i];
+
+                if (inBounds(nh, nr, nc) && t[nh][nr][nc] == 0) {
+                    t[nh][nr][nc] = 1;
+                    cnt--;
+                    q.offer(new int[] { nh, nr, nc, days + 1 });
+                }
+            }
+        }
+
+        return cnt == 0 ? maxDays : -1;
+    }
+
+    private static boolean inBounds(int h, int r, int c) {
+        return 0 <= h && h < H && 0 <= r && r < N && 0 <= c && c < M;
+    }
+}

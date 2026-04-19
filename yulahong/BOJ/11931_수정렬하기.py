@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input())
 num_lst = []
 
@@ -5,7 +8,6 @@ for _ in range(N):
     a = int(input())
     num_lst.append(a)
 
-b = reversed(num_lst)
+b = sorted(num_lst, reverse= True)
 
-for i in b:
-    print(i)
+print('\n'.join(map(str, b)))
