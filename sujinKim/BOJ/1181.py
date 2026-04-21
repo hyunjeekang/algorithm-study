@@ -14,6 +14,9 @@ for j in result:
     print(j)
 
 
+# class를 만들어서 우선순위로 정렬할 수 있는 기능 
+# 다른언어로 
+
 
 
 
