@@ -56,8 +56,9 @@
 | 9주차 ([3/30](/summary/week9-260330.md)) | 백트래킹 | [N-Queen](https://www.acmicpc.net/problem/9663) | <img src='https://static.solved.ac/tier_small/12.svg' height='20px'/> | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 10주차 ([4/5](/summary/week11-260412.md)) | 시뮬레이션 | [Maaaaaaaaaze](https://www.acmicpc.net/problem/16985) | <img src='https://static.solved.ac/tier_small/13.svg' height='20px'/> | ✅ | ❎ | ❎ | ✅ | ✅ | ❎ |
 | 11주차 ([4/12](/summary/week11-260412.md)) | 정렬 I | [수 정렬하기 4](https://www.acmicpc.net/problem/11931) | <img src='https://static.solved.ac/tier_small/6.svg' height='20px'/> | ✅ | ❎ | ✅ | ❎ | ✅ | ✅ |
-| 12주차 ([4/19](/summary/week11-260419.md)) | 정렬 II <br> 재귀 | [단어 정렬](https://www.acmicpc.net/problem/1181) <br> [Z](https://www.acmicpc.net/problem/1074) | <img src='https://static.solved.ac/tier_small/6.svg' height='20px'/> <br> <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/>| ✅<br>✅ | ✅<br>❎ | ✅<br>❎ | ✅<br>❎ | ✅<br>✅ | ✅<br>❎ |
-| 13주차 ([4/26](/summary/week11-260426.md)) | DP <br> 백트래킹 | [계단 오르기](https://www.acmicpc.net/problem/2579) <br> [암호 만들기](https://www.acmicpc.net/problem/1759) | <img src='https://static.solved.ac/tier_small/8.svg' height='20px'/> <br> <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/>|  |  |  |  |  |  |
+| 12주차 ([4/19](/summary/week12-260419.md)) | 정렬 II <br> 재귀 | [단어 정렬](https://www.acmicpc.net/problem/1181) <br> [Z](https://www.acmicpc.net/problem/1074) | <img src='https://static.solved.ac/tier_small/6.svg' height='20px'/> <br> <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/>| ✅<br>✅ | ✅<br>❎ | ✅<br>❎ | ✅<br>❎ | ✅<br>✅ | ✅<br>❎ |
+| 13주차 ([4/26](/summary/week13-260426.md)) | DP <br> 백트래킹 | [계단 오르기](https://www.acmicpc.net/problem/2579) <br> [암호 만들기](https://www.acmicpc.net/problem/1759) | <img src='https://static.solved.ac/tier_small/8.svg' height='20px'/> <br> <img src='https://static.solved.ac/tier_small/11.svg' height='20px'/>| ✅<br>✅ | ✅<br>✅ | ✅<br>✅ | ✅<br>✅ | ✅<br>✅ | ✅<br>✅ |
+| 14주차 ([5/3](/summary/week14-260503.md)) | SWEA 문제 풀이 | [파핑파핑 지뢰찾기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5LwsHaD1MDFAXc) | <img src="https://img.shields.io/badge/D4-003399?style=flat-square"> | | | | | | |
 
 <br/>
 
