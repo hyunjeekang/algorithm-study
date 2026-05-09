@@ -3,129 +3,100 @@ import java.util.*;
 
 public class SWEA2383 {
 
-    static int N, T, temp, curRes, result, pCnt;
-
-    static boolean[] comb;
-
+    static int N, T, pCnt;
     static List<int[]> pCord;
     static List<int[]> sCord;
-
-    static BufferedReader br;
-    static StringBuilder sb;
-    static StringTokenizer st;
+    static int[][] dist; // 거리 미리 계산
 
     public static void main(String[] args) throws IOException {
-
-        br = new BufferedReader(new InputStreamReader(System.in));
-        sb = new StringBuilder();
+        
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
 
         T = Integer.parseInt(br.readLine());
         for (int t = 1; t <= T; t++) {
-
             N = Integer.parseInt(br.readLine());
+            
+            pCord = new ArrayList<>();
+            sCord = new ArrayList<>();
 
-            // map
-            pCord = new ArrayList<int[]>();
-            sCord = new ArrayList<int[]>();
-
+            // 입력
             for (int r = 0; r < N; r++) {
                 st = new StringTokenizer(br.readLine());
                 for (int c = 0; c < N; c++) {
-                    temp = Integer.parseInt(st.nextToken());
-                    if (temp == 1)
-                        pCord.add(new int[] { r, c });
-                    else if (temp != 0)
-                        sCord.add(new int[] { r, c, temp });
+                    int temp = Integer.parseInt(st.nextToken());
+                    if (temp == 1) pCord.add(new int[]{r, c});
+                    else if (temp >= 2) sCord.add(new int[]{r, c, temp});
                 }
             }
-
-            // cnt
+            
             pCnt = pCord.size();
-            comb = new boolean[pCnt];
+            
+            // 거리 미리 계산
+            dist = new int[pCnt][2];
+            for (int i = 0; i < pCnt; i++) {
+                int[] p = pCord.get(i);
+                int[] s1 = sCord.get(0);
+                int[] s2 = sCord.get(1);
+                dist[i][0] = Math.abs(p[0] - s1[0]) + Math.abs(p[1] - s1[1]);
+                dist[i][1] = Math.abs(p[0] - s2[0]) + Math.abs(p[1] - s2[1]);
+            }
 
-            // reuslt
-            result = Integer.MAX_VALUE;
-            dfs(0);
+            int result = Integer.MAX_VALUE;
+            
+            // 비트마스킹
+            int totalCases = 1 << pCnt;
+            for (int mask = 0; mask < totalCases; mask++) {
+                result = Math.min(result, simulation(mask));
+            }
+
             sb.append("#").append(t).append(" ").append(result).append("\n");
         }
-
         System.out.println(sb);
-
     }
 
-    /**
-     * (4 ≤ N ≤ 10)
-     * (1 ≤ pCnt ≤ 10)
-     * (2 ≤ 계단의 길이 ≤ 10)
-     * 계단의 입구는 반드시 2개
-     */
+    // 시뮬레이션
+    public static int simulation(int mask) {
+        int[] q1 = new int[pCnt];
+        int[] q2 = new int[pCnt];
+        int idx1 = 0, idx2 = 0;
 
-    public static void dfs(int depth) {
-
-        if (depth == pCnt) {
-
-            curRes = simulation();
-            result = Math.min(result, curRes);
-
-            return;
-        }
-
-        comb[depth] = true;
-        dfs(depth + 1);
-        comb[depth] = false;
-        dfs(depth + 1);
-
-    }
-
-    public static int simulation() {
-        ArrayList<Integer> st1arr = new ArrayList<>();
-        ArrayList<Integer> st2arr = new ArrayList<>();
-
-        // 계단 사람 도착 시간
+        // 마스크 확인 -> 계단 분기
         for (int i = 0; i < pCnt; i++) {
-            if (comb[i]) {
-                st1arr.add(getDist(pCord.get(i)[0], pCord.get(i)[1], sCord.get(0)[0], sCord.get(0)[1]));
+            // i번째 비트가 1이면 1번 계단, 0이면 2번 계단
+            if ((mask & (1 << i)) != 0) {
+                q1[idx1++] = dist[i][0];
             } else {
-                st2arr.add(getDist(pCord.get(i)[0], pCord.get(i)[1], sCord.get(1)[0], sCord.get(1)[1]));
+                q2[idx2++] = dist[i][1];
             }
         }
 
-        // 각 계단별 소요 시간 계산
-        int time1 = calculateStairTime(st1arr, sCord.get(0)[2]);
-        int time2 = calculateStairTime(st2arr, sCord.get(1)[2]);
+        int time1 = calculateStairTime(q1, idx1, sCord.get(0)[2]);
+        int time2 = calculateStairTime(q2, idx2, sCord.get(1)[2]);
 
-        // 더 늦게 끝나는 계단 시간 리턴
         return Math.max(time1, time2);
     }
 
-    // 계단별 사람들 다 내려가는 시간
-    public static int calculateStairTime(ArrayList<Integer> arr, int length) {
-        if (arr.isEmpty())
-            return 0;
-
-        // 도착 시간 정렬
-        Collections.sort(arr);
-
-        int[] finishTime = new int[arr.size()];
-
-        for (int i = 0; i < arr.size(); i++) {
-            int arrivalTime = arr.get(i);
-
+    // 계단 소요 시간 계산
+    public static int calculateStairTime(int[] arr, int len, int stairLength) {
+        if (len == 0) return 0;
+        
+        // 들어온 사람 수(len) 만큼만 정렬
+        Arrays.sort(arr, 0, len);
+        
+        int[] finishTime = new int[len];
+        
+        for (int i = 0; i < len; i++) {
+            int arrivalTime = arr[i];
+            
             if (i < 3) {
-                // 앞 3명 바로 내려감
-                finishTime[i] = arrivalTime + 1 + length;
+                finishTime[i] = arrivalTime + 1 + stairLength;
             } else {
-                // 이후 사람들은 3칸 앞의 사람이 다 내려간 뒤 진입
-                // ( 도착 + 1분 , 3칸 앞 사람이 계단 탈출 시간 중 늦은 시간 ) + 계단 길이
-                finishTime[i] = Math.max(arrivalTime + 1, finishTime[i - 3]) + length;
+                finishTime[i] = Math.max(arrivalTime + 1, finishTime[i - 3]) + stairLength;
             }
         }
-
-        // 마지막으로 탈출한 사람 시간 리턴
-        return finishTime[arr.size() - 1];
-    }
-
-    public static int getDist(int sr, int sc, int er, int ec) {
-        return Math.abs(sr - er) + Math.abs(sc - ec);
+        
+        return finishTime[len - 1];
     }
 }
