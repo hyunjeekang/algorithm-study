@@ -1,45 +1,38 @@
-import java.util.ArrayList;
-import java.util.List;
-
-class Solution1014 {
+class Solution {
     public int[][] rotateGrid(int[][] grid, int k) {
-        int n = grid[0].length;
         int m = grid.length;
+        int n = grid[0].length;
         int layers = Math.min(m, n) / 2;
-        List<Integer> layer = new ArrayList<>();
+
+        int maxSize = 2 * (m + n) - 4;
+        int[] layer = new int[maxSize];
 
         for (int l = 0; l < layers; l++) {
-            layer.clear();
+            int size = 0;
 
-            // top
-            for (int c = l; c < n - l; c++) 
-                layer.add(grid[l][c]);
-            // right
+            // fill layer arr 
+            for (int c = l; c < n - l; c++)
+                layer[size++] = grid[l][c];
             for (int r = l + 1; r < m - l; r++)
-                layer.add(grid[r][n - 1 - l]);
-            // bottom
+                layer[size++] = grid[r][n - 1 - l];
             for (int c = n - 2 - l; c >= l; c--)
-                layer.add(grid[m - 1 - l][c]);
-            // left
+                layer[size++] = grid[m - 1 - l][c];
             for (int r = m - 2 - l; r > l; r--)
-                layer.add(grid[r][l]);
+                layer[size++] = grid[r][l];
 
-            int s = layer.size();
-            int p = k % s;
+            // rotate
+            int p = k % size;
             int i = 0;
 
-            // top
+            // fill grid
             for (int c = l; c < n - l; c++)
-                grid[l][c] = layer.get((p + i++) % s);
-            // right
+                grid[l][c] = layer[(p + i++) % size];
             for (int r = l + 1; r < m - l; r++)
-                grid[r][n - 1 - l] = layer.get((p + i++) % s);
-            // bottom
+                grid[r][n - 1 - l] = layer[(p + i++) % size];
             for (int c = n - 2 - l; c >= l; c--)
-                grid[m - 1 - l][c] = layer.get((p + i++) % s);
-            // left
+                grid[m - 1 - l][c] = layer[(p + i++) % size];
             for (int r = m - 2 - l; r > l; r--)
-                grid[r][l] = layer.get((p + i++) % s);
+                grid[r][l] = layer[(p + i++) % size];
         }
 
         return grid;
