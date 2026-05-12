@@ -1,24 +1,28 @@
-import java.util.ArrayList;
-import java.util.List;
-
 class Solution2553 {
     public int[] separateDigits(int[] nums) {
-        List<Integer> list = new ArrayList<>();
-
+        
+        // 총 자릿수 계산
+        int totalDigits = 0;
         for (int num : nums) {
-            separate(num, list);
+            while (num > 0) {
+                totalDigits++;
+                num /= 10;
+            }
         }
 
-        return list.stream().mapToInt(i -> i).toArray();
-    }
+        // 결과 배열 할당
+        int[] result = new int[totalDigits];
+        int idx = totalDigits - 1;
 
-    public void separate(int num, List<Integer> list) {
-        int insertIdx = list.size();
-
-        while (num >= 10) {
-            list.add(insertIdx, num % 10);
-            num /= 10;
+        // 뒤부터 채우기
+        for (int i = nums.length - 1; i >= 0; i--) {
+            int num = nums[i];
+            while (num > 0) {
+                result[idx--] = num % 10;
+                num /= 10;
+            }
         }
-        list.add(insertIdx, num);
+
+        return result;
     }
 }
