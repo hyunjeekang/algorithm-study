@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <set>
 using namespace std;
 
 int dx[4] = { -1, 0, 1, 0 };
@@ -34,7 +33,6 @@ int main() {
                 cin >> v[i][j];
             }
         }
-
         
         answer = 0;
         for (int i = 0;i < 26;i++) {
