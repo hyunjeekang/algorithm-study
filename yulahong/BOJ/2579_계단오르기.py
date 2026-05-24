@@ -10,7 +10,8 @@
 
 t = int(input())
 stair_scores  = [] # [10, 20, 15, 25, 10, 20]
-visited = [0]*(t+1) #[0, 0, 0, 0, 0, 0, 0]
+visited = [0]*(t+2) #[0, 0, 0, 0, 0, 0, 0]
+max_ans = 0
 
 for _ in range(t):
     a = int(input())
@@ -19,11 +20,74 @@ for _ in range(t):
 # 인덱스 사용할 계단 리스트
 scores = [0] + stair_scores # [0, 10, 20, 15, 25, 10, 20]
 
-def dfs(ground):
-    if ground == 1:
+# def dfs(ground, score, step):
+#     global max_ans
+    
+#     # print(ground, score, step)
+    
+    
+#     visited[ground] = 1
+#     if ground <= 0:
+#         max_ans = max(max_ans, score )
+#         # 뭘 리턴할건지
+#         return
+        
+#         # 최조지점
+#         # socres[t+1] -> ground(==0)이 될 때가지 보내기
+#     for i in range(1,3):
+#         # if visited[ground + 1] == 1 and i == 1:
+#         if step == 2 and i == 1 and ground != 1:  
+#             continue
+        
+#         if ground - i < 0:
+#             break
+#             # ground - 1 가지마
+        
+#         if i != 1:
+#             dfs(ground - i, score + scores[ground - i], 1)
+#         else:
+#             dfs(ground - i, score + scores[ground - i], step+1)
+#         visited[ground - i] = 0
+            
+# dfs(t, scores[t], 1)
+# print(max_ans)
+
+def dfs(ground, score):
+    global max_ans
+    
+    # print(ground, score, step)
+    
+    
+    visited[ground] = 1
+    if ground <= 0:
+        max_ans = max(max_ans, score )
+        # 뭘 리턴할건지
         return
-    if ground == 2:
-        return
+        
+        # 최조지점
+        # socres[t+1] -> ground(==0)이 될 때가지 보내기
+    for i in range(1,3):
+        if visited[ground + 1] == 1 and i == 1 and ground != 1:
+        # if step == 2 and i == 1 and ground != 1:  
+            continue
+        
+        if ground - i < 0:
+            break
+            # ground - 1 가지마
+        
+        if i != 1:
+            dfs(ground - i, score + scores[ground - i])
+        else:
+            dfs(ground - i, score + scores[ground - i])
+        visited[ground - i] = 0
+            
+dfs(t, scores[t])
+print(max_ans)
+            
+        # 재귀/ dfs
+        # 인덱스로
+        # 현재 방문한 곳이 직전 방문한 곳과 인덱스 연속되면 그 다음 연속된 인덱스는 방문하지 못하도록 조건
+ 
     
 # 내려오면서 더하면서 내려오가
 # 스코어스의 인덱스가 1이나 2가 됐을 때 더한 최종 값 반환
