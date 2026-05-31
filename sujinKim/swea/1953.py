@@ -11,6 +11,9 @@
 # 숫자 1-7 : 해당 위치의 터널 구조물 타입 
 # 숫자 0 : 터널이 없는 장소 
 
+
+from collections import deque
+
 # 상 하 좌 우 
 dr = [-1,1,0,0]
 dc = [0,0,-1,1]
@@ -31,7 +34,8 @@ tunnel = {
 
 def bfs(sx,sy,L):
     # 위치,L 표시 
-    queue = [(sx,sy,1)] # 시간당 1의 거리,,,,,,, 이미 움직아곳 넣으니까 1인듯 
+    queue = deque()
+    queue.append((sx,sy,1)) # 시간당 1의 거리,,,,,,, 이미 움직아곳 넣으니까 1인듯 
     visited= [[False]*M for _ in range(N)]
 
     visited[sx][sy] = True
@@ -39,7 +43,7 @@ def bfs(sx,sy,L):
     count = 1 # 탈주범이 위치할 수 있는 곳의 개수 
 
     while queue:
-        x,y,t = queue.pop(0)
+        x,y,t = queue.popleft()
 
         # L시간에 도달헀다면 다음 칸으로 확장 ㄴㄴ
         if t== L:
@@ -61,25 +65,26 @@ def bfs(sx,sy,L):
 
                     if opp[d] in tunnel[next_tunnel]:
 
-                        if t + 1 <= L:
-                            visited[nr][nc] = True
-                            count += 1
-                            queue.append((nr,nc,t+1))
+                        #  if t + 1 < L:
+                        visited[nr][nc] = True
+                        count += 1
+                        queue.append((nr,nc,t+1))
 
     return count 
 
 
+
 T = int(input())
 for tc in range(1,T+1):
-    N,M,R,C,L = map(int(input().split()))
+    N,M,R,C,L = map(int,input().split())
     # 세로크기 N, 가로크기 M, 맨홀 뚜껑 위치 세로 R, 맨홀 뚜껑 위치 가로 C , 탈출 후 소요 시간 L
 
     # 지도 입력 받기 
     grid = []
     for _ in range(N):
-        grid.append(list(map(int(input().split()))))
+        grid.append(list(map(int,input().split())))
 
-        result = bfs(R,C,L)
+    result = bfs(R,C,L)
 
     print(f'#{tc} {result}')
 
