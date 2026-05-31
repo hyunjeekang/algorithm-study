@@ -1,0 +1,73 @@
+#include <iostream>
+#include <queue>
+#include <tuple>
+using namespace std;
+ 
+int grid[1000][1000];
+int dx[4] = { -1, 1, 0, 0 };
+int dy[4] = { 0, 0, -1, 1 };
+ 
+// 같은 방 번호가 없기 때문에 무조건 하나의 길로 이동하게 된다!
+int visit_rooms(int x, int y, int N) {
+    int cnt = 1;
+    queue<tuple<int, int>> q;
+    q.push({ x, y });
+    while (!q.empty()) {
+        int r = get<0>(q.front()), c = get<1>(q.front());
+        q.pop();
+        for (int d = 0; d < 4; d++) {
+            int nr = r + dx[d], nc = c + dy[d];
+            if ((nr >= 0 && nr < N) && (nc >= 0 && nc < N)) {
+                if (grid[nr][nc] == grid[r][c] + 1) {
+                    q.push({ nr, nc });
+                    cnt++;
+                    break;
+                }
+            }
+        }
+    }
+    return cnt;
+};
+ 
+int main() {
+    int T;
+    cin >> T;
+    for (int tc = 1; tc <= T; tc++) {
+        int N;
+        cin >> N;
+        for (int x = 0; x < N; x++) {
+            for (int y = 0; y < N; y++) {
+                cin >> grid[x][y];
+            }
+        }
+ 
+        int room_num = 0, room_cnt = 0;
+        for (int x = 0; x < N; x++) {
+            for (int y = 0; y < N; y++) {
+                int can_go = true;
+                for (int d = 0; d < 4; d++) {
+                    int nr, nc;
+                    nr = x + dx[d];
+                    nc = y + dy[d];
+                    if ((nr >= 0 && nr < N) && (nc >= 0 && nc < N)) {
+                        if (grid[nr][nc] == grid[x][y] - 1) {
+                            can_go = false;
+                            break;
+                        }
+                    }
+                }
+                if (can_go) {
+                    int cnt = visit_rooms(x, y, N);
+                    if (cnt > room_cnt) {
+                        room_num = grid[x][y];
+                        room_cnt = cnt;
+                    }
+                    else if (cnt == room_cnt && grid[x][y] < room_num) {
+                        room_num = grid[x][y];
+                    }
+                }
+            }
+        }
+        cout << "#" << tc << " " << room_num << " " << room_cnt << endl;
+    }
+};
