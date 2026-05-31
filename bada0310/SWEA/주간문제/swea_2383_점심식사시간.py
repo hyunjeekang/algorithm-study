@@ -3,10 +3,11 @@
 # - 이미 계단을 3명이 내려가고 있는 경우, 
 # 그 중 한 명이 계단을 완전히 내려갈 때까지 계단 입구에서 대기해야 한다.
 # 이미 3명이 있을 경우 어떻게 대처해야하는가? 돌아가는것이 더 빠른가 대기하는 것이 더 빠른가 
+
 from collections import deque
 
 def dist(ex,ey,r,c):
-    return abs(r-ex)+abs(c-ey)+1 # 도착하는 시간 
+    return abs(r-ex)+abs(c-ey) # 도착하는 시간 
 
 def time(r,c,arr): # end_point 의 좌표랑 team1
     arrive = []
@@ -18,7 +19,7 @@ def time(r,c,arr): # end_point 의 좌표랑 team1
     arrive.sort()
     for k in range(len(arrive)):
 
-        if len(q) >= 3:
+        if len(q) >= 3: #K 로 분기 해보는 방법도 고민해봐야 할듯 !! 
             start_time = max(arrive[k], q.popleft())
             q.append(start_time + stair_length)
         else:
@@ -42,7 +43,6 @@ def comb(depth):
 
     comb(depth+1)
     team1.pop()
-    
 
     team2.append(human[depth])
     comb(depth+1)
@@ -70,5 +70,8 @@ for tc in range(1,T+1):
     team2 = []
     comb(0)
 
-    print(f'#{tc}',min_time-1)
+    print(f'#{tc}',min_time)
+    
+    
+    
 
