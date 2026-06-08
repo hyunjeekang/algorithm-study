@@ -40,7 +40,7 @@ def move(r,c):
                 opposite_d = (d+2)%4
                 
                 if opposite_d in pipe_dict[next_pipe]:
-                    visited[nx][ny] = visited[cx][cy]+1
+                    visited[nx][ny] = visited[cx][cy]+1 #L 을 늘려주는 과정 
                     q.append((nx,ny))
                     cnt += 1
     return cnt 
